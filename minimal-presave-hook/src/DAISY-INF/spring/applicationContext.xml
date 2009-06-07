@@ -14,11 +14,21 @@
                             http://daisycms.org/schemas/config-springext.xsd">
 
  <context:annotation-config/>
-
+ <daisy:import-service id="configurationManager" service="org.outerj.daisy.configuration.ConfigurationManager"/>
+ <daisy:import-service id="repositoryManager" service="org.outerj.daisy.repository.RepositoryManager"/>
  <daisy:import-service id="pluginRegistry" service="org.outerj.daisy.plugin.PluginRegistry"/>
  
- <bean id="presave-hook-example" class="com.test.PreSaveHookExample">
+ <bean id="twitter-repository-extension" class="com.test.TwitterRepositoryExtension">
+ 	<constructor-arg>
+	 	<conf:configuration group="extra" name="twitter-repository-extension" source="configurationManager">
+	 		<conf:default xmlns="">
+	    		<twitterUser>twitter</twitterUser>
+	    		<twitterPasswd>twitter</twitterPasswd>
+	    	</conf:default>
+	    </conf:configuration>
+    </constructor-arg>
  	<constructor-arg ref="pluginRegistry"/>
+ 	<constructor-arg ref="repositoryManager"/>
  </bean>
  
  </beans>
