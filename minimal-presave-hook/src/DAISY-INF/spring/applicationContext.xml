@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans              xmlns = "http://www.springframework.org/schema/beans"
+               xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:daisy = "http://outerx.org/daisy/1.0#runtime-springext"
+              xmlns:conf = "http://outerx.org/daisy/1.0#config-springext"
+           xmlns:context = "http://www.springframework.org/schema/context"
+      xsi:schemaLocation = "http://www.springframework.org/schema/beans
+      						http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                            http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context-2.5.xsd
+                            http://outerx.org/daisy/1.0#runtime-springext
+							http://daisycms.org/schemas/daisyruntime-springext.xsd
+                            http://outerx.org/daisy/1.0#config-springext
+                            http://daisycms.org/schemas/config-springext.xsd">
+
+ <context:annotation-config/>
+
+ <daisy:import-service id="pluginRegistry" service="org.outerj.daisy.plugin.PluginRegistry"/>
+ 
+ <bean id="presave-hook-example" class="com.test.PreSaveHookExample">
+ 	<constructor-arg ref="pluginRegistry"/>
+ </bean>
+ 
+ </beans>
