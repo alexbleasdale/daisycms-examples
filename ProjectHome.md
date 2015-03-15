@@ -1,0 +1,1 @@
+Daisy CMS examples for reference - including a minimal pre-save hook example project and a more detailed repository extension plugin
